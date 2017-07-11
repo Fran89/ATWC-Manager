@@ -71,7 +71,7 @@ int Convert::readATWC(QString filename){
 
     for ( i=0; i<iNumStnDisk; i++ )
     {
-        memset( StaArrayDisk[i].plRawCircBuff, 5,
+        memset( StaArrayDisk[i].plRawCircBuff, 0,
                 sizeof (qint32) * StaArrayDisk[i].lRawCircSize );
     }
     /* Read in all the data */
