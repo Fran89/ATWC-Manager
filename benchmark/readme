@@ -1,3 +1,34 @@
 The grammar is for use with the Hexinator program:
-
 https://hexinator.com/
+
+The benchmark.atwc file is a manually contructed ATWC file which is
+ an internal NTWC seismic data format.  The format looks like:
+
+structure DISKHEADER (24 bytes)
+structure CHNLHEADER (208 bytes (200 bytes in the example) * the NumStations defined in the DISKHEADER)
+chn 0 samp0, chn 0 samp1, ... chn 0 lNumSamps-1
+chn 1 samp0, chn 1 samp1, ... chn 1 lNumSamps-1
+                .
+                .
+                .
+chn NSta-1 samp0, chn NSta-1 samp1, ... chn NSta-1 lNumSamps-1
+
+Samp0 from each channel is the same time (well, almost), etc.
+The data is written in binary (always i4).
+Filename contain information about the time it was written. The file name is in the form
+
+[RootDirectory]\Dyymmdd\Hmdhhmm.[Suffix]yy.  
+
+Each day gets a new sub-directory. 
+
+benchmark.atwc is composed of 2 Headers (HNE, HNN) and 1 Station (MY10) and contains
+60 sec of data at 40sps (total 2400 samps).
+
+HNE contains:           HNN contains:
+ 1 for 15s               0 for 15s
+ 0 for 15s               1 for 15s
+-1 for 15s               0 for 15s
+ 0 for 15s              -1 for 15s
+ 1 for 15s               0 for 15s
+ 
+It should output a minute starting from Jun 10, 2017.
