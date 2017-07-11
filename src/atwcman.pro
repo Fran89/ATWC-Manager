@@ -1,14 +1,11 @@
-QT += core gui
+QT += core
+QT -= gui
 
 CONFIG += c++11
 
 TARGET = atwcman
 CONFIG += console
 CONFIG -= app_bundle
-
-QMAKE_RPATH = $ORIGIN/lib
-
-LIBS = -lpcre -L/lib/x86_64-linux-gnu/libpcre.so.3.13.2
 
 TEMPLATE = app
 
